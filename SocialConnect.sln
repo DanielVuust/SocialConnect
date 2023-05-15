@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialConnect", "SocialConnect\SocialConnect.csproj", "{53CD90D0-6723-498C-98E2-6341E78E0198}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53CD90D0-6723-498C-98E2-6341E78E0198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53CD90D0-6723-498C-98E2-6341E78E0198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53CD90D0-6723-498C-98E2-6341E78E0198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53CD90D0-6723-498C-98E2-6341E78E0198}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7C3E387-7C12-460E-85B7-03A2BDBDAA54}
+	EndGlobalSection
+EndGlobal
