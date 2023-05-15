@@ -4,10 +4,11 @@ namespace SocialConnect.Repository.BulletinRepository
 {
     public interface IBulletinRepository
     {
-        void CreateBulletin(string name, string description, string AuthorId);
-        void UpdateBulletin(int id);
-        void DeleteBulletin(int id);
-        IEnumerable<Bulletin> GetBulletin(int id);
-        IEnumerable<Bulletin> GetBulletins();
+        public Task CreateBulletin(Bulletin bulletinEntity);
+        //public Task UpdateBulletin(Bulletin bulletinEntity);
+        //public Task DeleteBulletin(Bulletin bulletinEntity);
+        //public Task<IEnumerable<Bulletin>> GetBulletin(Bulletin bulletinEntity);
+        //public Task<IEnumerable<Bulletin>> GetBulletins();
+        //public Task<IEnumerable<Bulletin>> GetBulletinsByAuthorId(string authorId);
     }
 }

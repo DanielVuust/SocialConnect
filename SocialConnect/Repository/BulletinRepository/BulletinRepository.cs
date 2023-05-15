@@ -4,29 +4,55 @@ namespace SocialConnect.Repository.BulletinRepository
 {
     public class BulletinRepository : IBulletinRepository
     {
-        public void CreateBulletin(string name, string description, string AuthorId)
+        private SocialConnectContext _socialConnectContext;
+
+        public BulletinRepository(SocialConnectContext socialConnectContext)
         {
-            throw new NotImplementedException();
+            _socialConnectContext = socialConnectContext;
         }
 
-        public void DeleteBulletin(int id)
+        public Task CreateBulletin(Bulletin bulletinEntity)
         {
-            throw new NotImplementedException();
+            _socialConnectContext.Bulletins.Add(bulletinEntity);
+            _socialConnectContext.SaveChanges();
+            return Task.CompletedTask;
         }
 
-        public IEnumerable<Bulletin> GetBulletin(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<Bulletin> GetBulletins()
-        {
-            throw new NotImplementedException();
-        }
+        //public Task UpdateBulletin(Bulletin bulletinEntity)
+        //{
+        //    _socialConnectContext.Bulletins.Update(bulletinEntity);
+        //    _socialConnectContext.SaveChanges();
+        //    return Task.CompletedTask;
+        //}
 
-        public void UpdateBulletin(int id)
-        {
-            throw new NotImplementedException();
-        }
+
+        //public Task DeleteBulletin(Bulletin bulletinEntity)
+        //{
+        //    _socialConnectContext.Bulletins.Remove(bulletinEntity);
+        //    _socialConnectContext.SaveChanges();
+        //    return Task.CompletedTask;
+        //}
+
+
+        //public Task<IEnumerable<Bulletin>> GetBulletin(Bulletin bulletinEntity)
+        //{
+        //    _socialConnectContext.Bulletins.Where(b => b.Id == bulletinEntity.Id);
+        //    _socialConnectContext.SaveChanges();
+        //    return Task.CompletedTask;
+        //    throw new NotImplementedException();
+        //}
+
+
+        //public Task<IEnumerable<Bulletin>> GetBulletins()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+
+        //public Task<IEnumerable<Bulletin>> GetBulletinsByAuthorId(string authorId)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
