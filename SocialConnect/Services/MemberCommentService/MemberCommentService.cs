@@ -28,7 +28,7 @@ namespace SocialConnect.Services.UserCommentService
 
                 var memberCommentEntity = new MemberComment
                 {
-                    Id = Convert.ToInt32(memberCommentDto.AuthorId),
+                    MemberId = memberCommentDto.AuthorId,
                     Body = memberCommentDto.Body,
                 };
 
