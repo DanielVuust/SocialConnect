@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Repository.BulletinRepository
 {
-    public class BulletinRepository : IBulletinRepository
+    public interface IBulletinRepository
     {
     }
 }

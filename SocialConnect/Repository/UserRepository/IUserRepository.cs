@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Repository.UserRepository
 {
-    public class UserRepository : IUserRepository
+    public interface IUserRepository
     {
     }
 }
