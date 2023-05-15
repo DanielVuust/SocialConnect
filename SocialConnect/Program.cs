@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using SocialConnect.Endpoints;
 using SocialConnect.Model;
+using SocialConnect.Repository.MemberRepository;
+using SocialConnect.Repository.UserRepository;
+using SocialConnect.Services.MemberService;
+using SocialConnect.Services.UserService;
 
 namespace SocialConnect
 {
@@ -17,9 +21,11 @@ namespace SocialConnect
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddTransient<IMemberService, MemberService>();
+            builder.Services.AddTransient<IMemberRepository, MemberRepository>();
 
             builder.Services.AddDbContext<SocialConnectContext>(x => 
-                x.UseSqlServer("Server=DESKTOP-9CPP9JJ;Database=SocialConnect;Trusted_Connection=True;TrustServerCertificate=True"));
+                x.UseSqlServer("Server=LAPTOP-DRMV9MFV;Database=SocialConnect;Trusted_Connection=True;TrustServerCertificate=True"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -32,13 +38,8 @@ namespace SocialConnect
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-<<<<<<< Updated upstream
-=======
-            
-
-            app.MapUserCommentsEndpoints();
             app.MapBulletinsEndpoints();
->>>>>>> Stashed changes
+            app.MapUserEndpoints();
 
             app.CreateMemberComment();
 

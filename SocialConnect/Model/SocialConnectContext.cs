@@ -1,7 +1,4 @@
-﻿
-
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace SocialConnect.Model
 {
@@ -14,7 +11,7 @@ namespace SocialConnect.Model
 
         public DbSet<Bulletin> Bulletins { get; set; }
         public DbSet<MemberComment> UserComments { get; set; }
-        public DbSet<User> Users { get; set;  }
+        public DbSet<Member> Members { get; set;  }
 
     }
 }
