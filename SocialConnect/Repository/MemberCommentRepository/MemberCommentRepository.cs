@@ -15,7 +15,7 @@ namespace SocialConnect.Repository.UserCommentRepository
         public Task CreateMemberComment(MemberComment memberCommentEntity)
         {
             _socialConnectContext.UserComments.Add(memberCommentEntity);
-            _socialConnectContext.SaveChanges();
+            _socialConnectContext.SaveChangesAsync();
             return Task.CompletedTask;
         }
     }

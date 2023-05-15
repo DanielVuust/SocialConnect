@@ -21,8 +21,6 @@ namespace SocialConnect.Endpoints
                 };
 
                 memberCommentService.CreateMemberComment(memberCommentDto);
-
-
             });
         }
     }
