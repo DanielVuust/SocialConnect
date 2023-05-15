@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using SocialConnect.Endpoints;
+using SocialConnect.Model;
 
 namespace SocialConnect
 {
@@ -15,6 +17,9 @@ namespace SocialConnect
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+            builder.Services.AddDbContext<SocialConnectContext>(x => 
+                x.UseSqlServer("Server=LAPTOP-DRMV9MFV;Database=SocialConnect;Trusted_Connection=True;TrustServerCertificate=True"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,7 +35,7 @@ namespace SocialConnect
             
 
             app.MapUserCommentsEndpoints();
-          
+
 
             app.Run();
         }
