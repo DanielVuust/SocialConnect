@@ -25,7 +25,7 @@ namespace SocialConnect.Services.BulletinService
 
                 var bulletinEntity = new Bulletin
                 {
-                    AuthorId = bulletinDto.AuthorId,
+                    MemberId = bulletinDto.AuthorId,
                     Name = bulletinDto.Name,
                     Description = bulletinDto.Description
                 };
@@ -33,9 +33,9 @@ namespace SocialConnect.Services.BulletinService
                 await _bulletinRepository.CreateBulletin(bulletinEntity);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

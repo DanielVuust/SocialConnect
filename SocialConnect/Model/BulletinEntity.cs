@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public Member Author { get; set; }
-        public virtual string AuthorId { get; set; }
+        public virtual int MemberId { get; set; }
 
     }
 }
