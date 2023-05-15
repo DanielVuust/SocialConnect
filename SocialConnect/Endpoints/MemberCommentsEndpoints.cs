@@ -1,20 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SocialConnect.Model;
 using SocialConnect.Repository.BulletinRepository;
+using System.Runtime.CompilerServices;
+using SocialConnect.Services.Dtos;
+using SocialConnect.Services.MemberCommentService;
 
 namespace SocialConnect.Endpoints
 {
     public static class MemberCommentsEndpoints
     {
-        public static void MapUserCommentsEndpoints(this WebApplication app)
+
+        public static async Task CreateMemberComment(this WebApplication app)
         {
-            app.MapPost("api/v1/userComments",
-                (HttpContext httpContext, SocialConnectContext t) =>
+
+            app.MapPost("api/v1/CreateMemberComment", (IMemberCommentService memberCommentService, string authorId, string body) =>
+            {
+
+                var memberCommentDto = new MemberCommentDto 
                 {
-                    t.Users.Add(new User() {Email = "test", Password = "test", Username = "test"});
-                    t.SaveChanges();
-                });
-            
+                    AuthorId = authorId,
+                    Body = body,
+                };
+
+                memberCommentService.CreateMemberComment(memberCommentDto);
+
+
+            });
         }
     }
 }
