@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Repository.UserCommentRepository
 {
-    public class UserCommentRepository : IMemberCommentRepository
+    public class MemberCommentRepository : IMemberCommentRepository
     {
     }
 }

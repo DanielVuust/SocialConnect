@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Services.Dtos
 {
-    public class UserCommentDto
+    public class MemberCommentDto
     {
     }
 }

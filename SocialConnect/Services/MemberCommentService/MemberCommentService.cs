@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Services.UserCommentService
 {
-    public class UserCommentService
+    public class MemberCommentService
     {
     }
 }

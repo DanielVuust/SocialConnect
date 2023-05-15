@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Services.UserService
 {
-    public class UserService
+    public class MemberService
     {
     }
 }
