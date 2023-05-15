@@ -32,6 +32,13 @@ namespace SocialConnect
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+<<<<<<< Updated upstream
+=======
+            
+
+            app.MapUserCommentsEndpoints();
+            app.MapBulletinsEndpoints();
+>>>>>>> Stashed changes
 
             app.CreateMemberComment();
 
