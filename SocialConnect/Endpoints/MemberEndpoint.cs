@@ -13,9 +13,14 @@ namespace SocialConnect.Endpoints
             {
 
             });
-            app.MapPost("api/v1/member", (IMemberService service, [FromBody] CreateMemberDto memberDto) =>
+            app.MapPost("api/v1/member", async (IMemberService service, [FromBody] CreateMemberDto memberDto) =>
             {
-                service.CreateMember(memberDto);
+                int memberId = await service.CreateMember(memberDto);
+                if (memberId == -1)
+                {
+
+                }
+                return Results.Created("api/v1/member", memberId);
             });
         }
     }

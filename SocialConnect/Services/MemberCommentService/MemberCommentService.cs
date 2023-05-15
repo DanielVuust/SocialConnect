@@ -26,7 +26,7 @@ namespace SocialConnect.Services.UserCommentService
 
                 var memberCommentEntity = new MemberComment
                 {
-                    AuthorId = memberCommentDto.AuthorId,
+                    MemberId = memberCommentDto.AuthorId,
                     Body = memberCommentDto.Body,
                 };
 
