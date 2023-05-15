@@ -12,10 +12,8 @@ namespace SocialConnect.Endpoints
 
         public static async Task CreateMemberComment(this WebApplication app)
         {
-
-            app.MapPost("api/v1/CreateMemberComment", (IMemberCommentService memberCommentService, string authorId, string body) =>
+            app.MapPost("api/create-member-comment", (IMemberCommentService memberCommentService, string authorId, string body) =>
             {
-
                 var memberCommentDto = new MemberCommentDto 
                 {
                     AuthorId = authorId,
