@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Model
 {
-    public class UserComment
+    public class MemberComment
     {
         public int Id { get; set; }
         public User Author { get; set; }

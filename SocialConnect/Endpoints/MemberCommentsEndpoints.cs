@@ -4,7 +4,7 @@ using SocialConnect.Repository.BulletinRepository;
 
 namespace SocialConnect.Endpoints
 {
-    public static class UserCommentsEndpoints
+    public static class MemberCommentsEndpoints
     {
         public static void MapUserCommentsEndpoints(this WebApplication app)
         {

@@ -1,6 +1,6 @@
 ﻿namespace SocialConnect.Repository.UserCommentRepository
 {
-    public interface IUserCommentRepository
+    public interface IMemberCommentRepository
     {
     }
 }
