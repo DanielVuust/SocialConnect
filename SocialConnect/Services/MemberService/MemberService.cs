@@ -25,5 +25,31 @@ namespace SocialConnect.Services.UserService
 
             return memberId;
         }
+
+        public async Task<DisplayableMemberDto> GetMember(int id)
+        {
+            DisplayableMemberDto? member = await this._memberRepository.GetMember(id);
+
+            if (member == null)
+            {
+                return null;
+                //Error handling
+            }
+
+            return member;
+
+        }
+
+        public async Task<List<DisplayableMemberDto>> GetMembers()
+        {
+            List<DisplayableMemberDto> members = await this._memberRepository.GetMembers();
+            return members;
+        }
+
+        public async Task<bool> DeleteMember(int id)
+        {
+            bool deleted = await this._memberRepository.DeleteMember(id);
+            return deleted;
+        }
     }
 }

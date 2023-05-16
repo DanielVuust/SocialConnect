@@ -25,5 +25,43 @@ namespace SocialConnect.Repository.MemberRepository
         {
             return this._context.Members.Any(x => x.Username == username);
         }
+
+        public async Task<List<DisplayableMemberDto>> GetMembers()
+        {
+            List<DisplayableMemberDto> members = this._context.Members.Select(x => new DisplayableMemberDto()
+            {
+                id = x.Id,
+                Email = x.Email,
+                Username = x.Username,
+
+            }).ToList();
+
+            return members;
+        }
+
+        public async Task<DisplayableMemberDto?> GetMember(int id)
+        {
+            DisplayableMemberDto? member = this._context.Members.Select(x => new DisplayableMemberDto()
+            {
+                id = x.Id,
+                Email = x.Email,
+                Username = x.Username,
+
+            }).FirstOrDefault(x => x.id == id);
+            return member;
+        }
+
+        public async Task<bool> DeleteMember(int id)
+        {
+            Member? member = this._context.Members.FirstOrDefault(x => x.Id == id);
+
+            if(member == null)
+                return false;
+
+            this._context.Members.Remove(member);
+            await this._context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
