@@ -1,5 +1,5 @@
 ﻿using SocialConnect.Model;
-using SocialConnect.Repository;
+using SocialConnect.Repository.Exceptions;
 using SocialConnect.Repository.UserCommentRepository;
 using SocialConnect.Services.Dtos;
 using SocialConnect.Services.Exceptions;
@@ -20,25 +20,17 @@ namespace SocialConnect.Services.UserCommentService
         {
             try
             {
-                //if (memberCommentDto == null)
-                //{
-                //    //Throw MemberCommentServiceException
-                //    throw new MemberCommentServiceException("Could not create member comment. Please try again later");
-                //}
-
                 var memberCommentEntity = new MemberComment
                 {
                     MemberId = memberCommentDto.AuthorId,
                     Body = memberCommentDto.Body,
                 };
 
-                //Catch exception that comes from repo
                 await _memberCommentRepository.CreateMemberComment(memberCommentEntity);
-
             }
-            catch (MemberCommentRepositoryException e)
+            catch (MemberCommentRepositoryException MCRE)
             {
-                throw new MemberCommentServiceException("Something went wrong", e);
+                throw new MemberCommentServiceException(MCRE.Message, MCRE);
             }
         }
     }
