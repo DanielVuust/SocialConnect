@@ -39,6 +39,20 @@ namespace SocialConnect.Services.BulletinService
             }
         }
 
+        public async Task<List<Bulletin>> GetBulletins()
+        {
+            try
+            {
+                var bulletins = await _bulletinRepository.GetBulletins();
+                return (List<Bulletin>)bulletins;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
 
         //public async Task UpdateBulletin(BulletinDto bulletinDto)
         //{

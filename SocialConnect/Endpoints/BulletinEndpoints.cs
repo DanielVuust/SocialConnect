@@ -20,6 +20,12 @@ namespace SocialConnect.Endpoints
 
                 bulletinService.CreateBulletin(bulletinDto);
             });
+
+            app.MapGet("api/v1/bulletins", async (IBulletinService bulletinService) =>
+            {
+                List<Bulletin> bulletins = await bulletinService.GetBulletins();
+                return Results.Ok(bulletins);
+            });
         }
     }
 }
