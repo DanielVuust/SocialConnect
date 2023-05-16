@@ -79,7 +79,7 @@ namespace SocialConnect.Endpoints
                 }
                 catch (UserNotFoundException ex)
                 {
-                    logger.LogInformation(ex, $"Could not find user by id: {id}");
+                    logger.LogWarning(ex, $"Could not find user by id: {id}");
                     return Results.BadRequest("User not found");
                 }
                 catch (Exception ex)

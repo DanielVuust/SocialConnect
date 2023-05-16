@@ -44,7 +44,7 @@ namespace SocialConnect.Services.BulletinService
             try
             {
                 var bulletins = await _bulletinRepository.GetBulletins();
-                return (List<Bulletin>)bulletins;
+                return bulletins.ToList();
             }
             catch (Exception ex)
             {

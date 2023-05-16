@@ -19,7 +19,7 @@ namespace SocialConnect.Repository.BulletinRepository
             return Task.CompletedTask;
         }
 
-        public Task<IEnumerable<Bulletin>> GetBulletins()
+        public async Task<IEnumerable<Bulletin>> GetBulletins()
         {
             var bulletins = _socialConnectContext.Bulletins.ToList();
             var bulletin = bulletins.Select(b => new Bulletin
@@ -28,8 +28,8 @@ namespace SocialConnect.Repository.BulletinRepository
                 MemberId = b.MemberId,
                 Title = b.Title,
                 Description = b.Description
-            });
-            return (Task<IEnumerable<Bulletin>>)bulletin;
+            }).AsEnumerable();
+            return bulletin;
         }
 
 
