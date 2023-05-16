@@ -5,6 +5,7 @@ using SocialConnect.Repository.BulletinRepository;
 using SocialConnect.Repository.MemberRepository;
 using SocialConnect.Repository.UserCommentRepository;
 using SocialConnect.Repository.UserRepository;
+using SocialConnect.Services;
 using SocialConnect.Services.BulletinService;
 using SocialConnect.Services.MemberCommentService;
 using SocialConnect.Services.MemberService;
@@ -40,6 +41,9 @@ namespace SocialConnect
             builder.Services.AddTransient<IBulletinService, BulletinService>();
             builder.Services.AddTransient<IBulletinRepository, BulletinRepository>();
             
+            //Hashing
+            builder.Services.AddSingleton<IHashingService, Sha1HashingService>();
+
             builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", false, true);
             
             builder.Services.AddDbContext<SocialConnectContext>(x => 

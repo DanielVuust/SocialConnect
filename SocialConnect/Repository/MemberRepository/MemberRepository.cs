@@ -2,6 +2,7 @@
 using SocialConnect.Model;
 using SocialConnect.Repository.UserRepository;
 using SocialConnect.Services.Dtos;
+using System.Security.Cryptography;
 
 namespace SocialConnect.Repository.MemberRepository
 {
@@ -17,17 +18,14 @@ namespace SocialConnect.Repository.MemberRepository
             _loggerFactory = loggerFactory;
             _logger = loggerFactory.CreateLogger<MemberRepository>();
         }
-        public async Task<int> CreateMember(CreateMemberDto memberDto)
+        public async Task<int> CreateMember(Member member)
         {
             this._logger.LogDebug("Calling CreateMember");
 
-            Member newMember = new Member()
-                {Email = memberDto.Email, Username = memberDto.Username, Password = memberDto.Password};
-            
-            this._context.Members.Add(newMember);
+            this._context.Members.Add(member);
             await this._context.SaveChangesAsync();
-            
-            return newMember.Id;
+
+            return member.Id;
         }
 
         public async Task<bool> IsUsernameAlreadyTaken(string username)
