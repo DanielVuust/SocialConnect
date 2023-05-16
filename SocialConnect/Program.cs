@@ -1,13 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using SocialConnect.Endpoints;
 using SocialConnect.Model;
+using SocialConnect.Repository.BulletinRepository;
 using SocialConnect.Repository.MemberRepository;
 using SocialConnect.Repository.UserCommentRepository;
 using SocialConnect.Repository.UserRepository;
+using SocialConnect.Services.BulletinService;
 using SocialConnect.Services.MemberCommentService;
 using SocialConnect.Services.MemberService;
 using SocialConnect.Services.UserCommentService;
 using SocialConnect.Services.UserService;
+
 
 namespace SocialConnect
 {
@@ -33,9 +36,13 @@ namespace SocialConnect
             builder.Services.AddTransient<IMemberCommentService, MemberCommentService>();
             builder.Services.AddTransient<IMemberCommentRepository, MemberCommentRepository>();
 
+            //Bulletin
+            builder.Services.AddTransient<IBulletinService, BulletinService>();
+            builder.Services.AddTransient<IBulletinRepository, BulletinRepository>();
+
 
             builder.Services.AddDbContext<SocialConnectContext>(x => 
-                x.UseSqlServer("Server=DESKTOP-9CPP9JJ;Database=SocialConnect;Trusted_Connection=True;TrustServerCertificate=True"));
+                x.UseSqlServer("Server=ZBC-E-CH-SKP011;Database=SocialConnect;Trusted_Connection=True;TrustServerCertificate=True"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
