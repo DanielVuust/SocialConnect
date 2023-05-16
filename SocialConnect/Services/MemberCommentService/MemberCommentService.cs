@@ -1,6 +1,8 @@
 ﻿using SocialConnect.Model;
+using SocialConnect.Repository.Exceptions;
 using SocialConnect.Repository.UserCommentRepository;
 using SocialConnect.Services.Dtos;
+using SocialConnect.Services.Exceptions;
 using SocialConnect.Services.MemberCommentService;
 
 namespace SocialConnect.Services.UserCommentService
@@ -18,12 +20,6 @@ namespace SocialConnect.Services.UserCommentService
         {
             try
             {
-                if (memberCommentDto == null)
-                {
-                    //Throw MemberCommentServiceException
-                    throw new Exception();
-                }
-
                 var memberCommentEntity = new MemberComment
                 {
                     MemberId = memberCommentDto.AuthorId,
@@ -31,11 +27,10 @@ namespace SocialConnect.Services.UserCommentService
                 };
 
                 await _memberCommentRepository.CreateMemberComment(memberCommentEntity);
-
             }
-            catch (Exception)
+            catch (MemberCommentRepositoryException MCRE)
             {
-                throw;
+                throw new MemberCommentServiceException(MCRE.Message, MCRE);
             }
         }
     }
