@@ -27,7 +27,7 @@ namespace SocialConnect.Endpoints
                 }catch (ShareExceptions ex)
                 {
                     logger.LogError(ex, "A problem occurred while sharing a post");
-                    return Results.Problem("Sry! Could not share the post :1(");
+                    return Results.Problem("Sry! A problem occurred while sharing the post :(");
                 }
             });
         }
