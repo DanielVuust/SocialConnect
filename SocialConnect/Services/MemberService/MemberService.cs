@@ -21,6 +21,8 @@ namespace SocialConnect.Services.UserService
         }
         public async Task<int> CreateMember(CreateMemberDto memberDto)
         {
+            this._logger.LogDebug("Calling CreateMember");
+
             if (await _memberRepository.IsUsernameAlreadyTaken(memberDto.Username))
             {
                 throw new UsernameAlreadyTakenException();
@@ -33,6 +35,8 @@ namespace SocialConnect.Services.UserService
 
         public async Task<DisplayableMemberDto?> GetMember(int id)
         {
+            this._logger.LogDebug("Calling GetMember");
+
             DisplayableMemberDto? member = await this._memberRepository.GetMember(id);
 
             return member;
@@ -41,6 +45,8 @@ namespace SocialConnect.Services.UserService
 
         public async Task<List<DisplayableMemberDto>> GetMembers()
         {
+            this._logger.LogDebug("Calling GetMembers");
+
             List<DisplayableMemberDto> members = await this._memberRepository.GetMembers();
 
             return members;
@@ -48,6 +54,8 @@ namespace SocialConnect.Services.UserService
 
         public async Task<bool> DeleteMember(int id)
         {
+            this._logger.LogDebug("Calling DeleteMember");
+
             bool deleted = await this._memberRepository.DeleteMember(id);
             return deleted;
         }
