@@ -7,7 +7,7 @@ namespace SocialConnect.Endpoints
 {
     public static class BulletinEndpoints
     {
-        public static void MapBulletinsEndpoints(this WebApplication app)
+        public static void MapBulletinEndpoints(this WebApplication app)
         {
             app.MapPost("api/v1/bulletin", (IBulletinService bulletinService, int memberId, string title, string description) =>
             {

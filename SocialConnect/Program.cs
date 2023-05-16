@@ -3,12 +3,14 @@ using SocialConnect.Endpoints;
 using SocialConnect.Model;
 using SocialConnect.Repository.BulletinRepository;
 using SocialConnect.Repository.MemberRepository;
+using SocialConnect.Repository.ShareRepository;
 using SocialConnect.Repository.UserCommentRepository;
 using SocialConnect.Repository.UserRepository;
 using SocialConnect.Services;
 using SocialConnect.Services.BulletinService;
 using SocialConnect.Services.MemberCommentService;
 using SocialConnect.Services.MemberService;
+using SocialConnect.Services.ShareService;
 using SocialConnect.Services.UserCommentService;
 using SocialConnect.Services.UserService;
 
@@ -40,6 +42,11 @@ namespace SocialConnect
             //Bulletin
             builder.Services.AddTransient<IBulletinService, BulletinService>();
             builder.Services.AddTransient<IBulletinRepository, BulletinRepository>();
+
+            //Share
+            builder.Services.AddTransient<IShareService, ShareService>();
+            builder.Services.AddTransient<IShareRepository, ShareRepository>();
+
             
             //Hashing
             builder.Services.AddSingleton<IHashingService, Sha1HashingService>();
@@ -61,7 +68,7 @@ namespace SocialConnect
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-            app.MapBulletinsEndpoints();
+            app.MapBulletinEndpoints();
             app.MapUserEndpoints();
 
             app.CreateMemberComment();
