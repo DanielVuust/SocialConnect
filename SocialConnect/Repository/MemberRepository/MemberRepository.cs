@@ -1,4 +1,5 @@
-﻿using SocialConnect.Model;
+﻿using SocialConnect.Exceptions;
+using SocialConnect.Model;
 using SocialConnect.Repository.UserRepository;
 using SocialConnect.Services.Dtos;
 
@@ -16,8 +17,10 @@ namespace SocialConnect.Repository.MemberRepository
         {
             Member newMember = new Member()
                 {Email = memberDto.Email, Username = memberDto.Username, Password = memberDto.Password};
+            
             this._context.Members.Add(newMember);
             await this._context.SaveChangesAsync();
+            
             return newMember.Id;
         }
 
@@ -35,7 +38,7 @@ namespace SocialConnect.Repository.MemberRepository
                 Username = x.Username,
 
             }).ToList();
-
+            
             return members;
         }
 
@@ -55,8 +58,10 @@ namespace SocialConnect.Repository.MemberRepository
         {
             Member? member = this._context.Members.FirstOrDefault(x => x.Id == id);
 
-            if(member == null)
-                return false;
+            if (member == null)
+            {
+                throw new UserNotFoundException();
+            }
 
             this._context.Members.Remove(member);
             await this._context.SaveChangesAsync();
