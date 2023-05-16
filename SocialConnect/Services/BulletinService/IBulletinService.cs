@@ -6,6 +6,7 @@ namespace SocialConnect.Services.BulletinService
     public interface IBulletinService
     {
         Task CreateBulletin(BulletinDto bulletinDto);
+
         //Task UpdateBulletin(BulletinDto bulletinDto);
 
 

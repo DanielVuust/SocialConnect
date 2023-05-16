@@ -1,4 +1,5 @@
 ﻿using SocialConnect.Model;
+using SocialConnect.Services.Dtos;
 
 namespace SocialConnect.Repository.BulletinRepository
 {
@@ -17,6 +18,20 @@ namespace SocialConnect.Repository.BulletinRepository
             _socialConnectContext.SaveChanges();
             return Task.CompletedTask;
         }
+
+        public Task<IEnumerable<Bulletin>> GetBulletins()
+        {
+            var bulletins = _socialConnectContext.Bulletins.ToList();
+            var bulletin = bulletins.Select(b => new Bulletin
+            {
+                Id = b.Id,
+                MemberId = b.MemberId,
+                Title = b.Title,
+                Description = b.Description
+            });
+            return (Task<IEnumerable<Bulletin>>)bulletin;
+        }
+
 
 
         //public Task UpdateBulletin(Bulletin bulletinEntity)

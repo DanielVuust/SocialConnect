@@ -17,6 +17,7 @@ namespace SocialConnect.Endpoints
             {
                 try
                 {
+<<<<<<< Updated upstream
                     var memberCommentDto = new MemberCommentDto
                     {
                         AuthorId = authorId,
@@ -30,6 +31,13 @@ namespace SocialConnect.Endpoints
                 {
                     return Results.Problem("An error occured. Please try again later :)");
                 }
+=======
+                    AuthorId = authorId,
+                    Body = body,
+                };
+
+                memberCommentService.CreateMemberComment(memberCommentDto);
+>>>>>>> Stashed changes
             });
         }
     }

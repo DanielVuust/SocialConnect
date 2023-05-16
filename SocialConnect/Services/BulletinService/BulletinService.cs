@@ -25,8 +25,8 @@ namespace SocialConnect.Services.BulletinService
 
                 var bulletinEntity = new Bulletin
                 {
-                    MemberId = bulletinDto.AuthorId,
-                    Name = bulletinDto.Name,
+                    MemberId = bulletinDto.MemberId,
+                    Title = bulletinDto.Title,
                     Description = bulletinDto.Description
                 };
 
@@ -38,6 +38,7 @@ namespace SocialConnect.Services.BulletinService
                 throw ex;
             }
         }
+
 
         //public async Task UpdateBulletin(BulletinDto bulletinDto)
         //{

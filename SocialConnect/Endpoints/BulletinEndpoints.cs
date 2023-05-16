@@ -9,12 +9,12 @@ namespace SocialConnect.Endpoints
     {
         public static void MapBulletinsEndpoints(this WebApplication app)
         {
-            app.MapPost("api/v1/CreateBulletin", (IBulletinService bulletinService, int authorId, string name, string description) =>
+            app.MapPost("api/v1/bulletin", (IBulletinService bulletinService, int memberId, string title, string description) =>
             {
                 var bulletinDto = new BulletinDto
                 {
-                    AuthorId = authorId,
-                    Name = name,
+                    MemberId = memberId,
+                    Title = title,
                     Description = description
                 };
 
