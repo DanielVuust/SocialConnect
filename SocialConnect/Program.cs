@@ -39,11 +39,13 @@ namespace SocialConnect
             //Bulletin
             builder.Services.AddTransient<IBulletinService, BulletinService>();
             builder.Services.AddTransient<IBulletinRepository, BulletinRepository>();
-
-
+            
+            builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", false, true);
+            
             builder.Services.AddDbContext<SocialConnectContext>(x => 
-                x.UseSqlServer("Server=ZBC-E-CH-SKP011;Database=SocialConnect;Trusted_Connection=True;TrustServerCertificate=True"));
+                x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -29,12 +29,12 @@ namespace SocialConnect.Endpoints
             {
                 try
                 {
-                    DisplayableMemberDto member = await service.GetMember(id);
+                    DisplayableMemberDto? member = await service.GetMember(id);
+                    if (member == null)
+                    {
+                        return Results.BadRequest("User not found");
+                    }
                     return Results.Ok(member);
-                }
-                catch (UserNotFoundException ex)
-                {
-                    return Results.BadRequest();
                 }
                 catch (Exception ex)
                 {

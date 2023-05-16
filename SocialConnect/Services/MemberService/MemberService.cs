@@ -10,80 +10,46 @@ namespace SocialConnect.Services.UserService
     public class MemberService : IMemberService
     {
         private readonly IMemberRepository _memberRepository;
+        private readonly ILoggerFactory _loggerFactory;
+        private readonly ILogger<MemberService> _logger;
 
-        public MemberService(IMemberRepository memberRepository)
+        public MemberService(IMemberRepository memberRepository, ILoggerFactory loggerFactory)
         {
             _memberRepository = memberRepository;
+            _loggerFactory = loggerFactory;
+            _logger = loggerFactory.CreateLogger<MemberService>();
         }
         public async Task<int> CreateMember(CreateMemberDto memberDto)
         {
-            try
+            if (await _memberRepository.IsUsernameAlreadyTaken(memberDto.Username))
             {
-                if (await _memberRepository.IsUsernameAlreadyTaken(memberDto.Username))
-                {
-                    throw new UsernameAlreadyTakenException();
-                }
-
-                int memberId = await _memberRepository.CreateMember(memberDto);
-
-                return memberId;
+                throw new UsernameAlreadyTakenException();
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            int memberId = await _memberRepository.CreateMember(memberDto);
+
+            return memberId;
         }
 
-        public async Task<DisplayableMemberDto> GetMember(int id)
+        public async Task<DisplayableMemberDto?> GetMember(int id)
         {
-            try
-            {
-                DisplayableMemberDto? member = await this._memberRepository.GetMember(id);
+            DisplayableMemberDto? member = await this._memberRepository.GetMember(id);
 
-                if (member == null)
-                {
-                    throw new UserNotFoundException();
-                }
-
-                return member;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return member;
 
         }
 
         public async Task<List<DisplayableMemberDto>> GetMembers()
         {
-            try
-            {
-                List<DisplayableMemberDto> members = await this._memberRepository.GetMembers();
+            List<DisplayableMemberDto> members = await this._memberRepository.GetMembers();
 
-                return members;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return members;
         }
 
         public async Task<bool> DeleteMember(int id)
         {
-            try
-            {
-                bool deleted = await this._memberRepository.DeleteMember(id);
-                return deleted;
-            }
-            catch (UserNotFoundException ex)
-            {
-
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            bool deleted = await this._memberRepository.DeleteMember(id);
+            return deleted;
         }
     }
 }
